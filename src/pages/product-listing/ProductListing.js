@@ -1,7 +1,16 @@
 import "./ProductListing.css"
 import productImg from "../../assets/images/product-image.svg"
+import {useEffect, useState} from "react"
+import axios from "axios"
+
 
 const ProductListing = ()=> {
+    const [productList , setProductList] = useState([])
+    useEffect(() => {
+      axios.get("/api/products").then((response) => {
+        setProductList(response.data.products);
+      });
+    }, []);
     return <div>
         <header className="header-nav flex">
         <ul className="navigation navbar-left flex">
@@ -93,164 +102,23 @@ const ProductListing = ()=> {
             </div>
         </aside>
         <main className="products">
-       
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image" />
 
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn primary-bg">Go to cart</button>
-            </div>
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image" />
-
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn">Add to cart</button>
-            </div>
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image" />
-
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn">Add to cart</button>
-            </div>
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image" />
-
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn primary-bg">Go to cart</button>
-            </div>
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image"/>
-
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn">Add to cart</button>
-            </div>
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image"/>
-
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn primary-bg">Go to cart</button>
-            </div>
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image"/>
-
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn primary-bg">Go to cart</button>
-            </div>
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image" />
-
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn ">Add to cart</button>
-            </div>
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image" />
-
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn">Add to cart</button>
-            </div>
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image" />
-
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn primary-bg">Go to cart</button>
-            </div>
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image" />
-
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn">Add to cart</button>
-            </div>
-            <div className="wishlist-product-container">
-                <img className="product-image" src= {productImg} alt="product-image" />
-
-                <i className="material-icons like-icon black"> favorite_border</i>
-
-                <div className="wishlist-product-info">
-                    <p className="wishlist-info-text margin-top-bottom font-size-small">
-                        Men premium jacket
-                    </p>
-                    <p className="price-text margin-top-bottom">Rs 2000</p>
-                </div>
-                <button className="add-to-cart-btn primary-bg">Go to cart</button>
-            </div>
-
+            {productList.map(product => {
+                 return <div className="wishlist-product-container">
+                 <img className="product-image" src= {productImg} alt="product-image" />
+ 
+                 <i className="material-icons like-icon black"> favorite_border</i>
+ 
+                 <div className="wishlist-product-info">
+                     <p className="wishlist-info-text margin-top-bottom ">
+                         {product.name}
+                     </p>
+                     <p className="price-text margin-top-bottom "> RS <span class = "line-through"> {product.originalPrice}</span> {product.discountedPrice}  </p> 
+                 </div>
+                 <button className="add-to-cart-btn primary-bg">Add to cart</button>
+             </div>})}
+ 
+            }}
         </main>
     </section>
     </div>

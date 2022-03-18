@@ -8,23 +8,98 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    title: "You Can WIN",
-    author: "Shiv Khera",
-    price: "5000",
-    categoryName: "non-fiction",
+    name: "Men premium Jacket",
+    originalPrice: "2000",
+    discountedPrice : "1500",
+    categoryName: "men",
+    rating : "4"
   },
   {
     _id: uuid(),
-    title: "You are Winner",
-    author: "Junaid Qureshi",
-    price: "3000",
-    categoryName: "horror",
+    name: "Men premium sports TShirt",
+    originalPrice: "1500",
+    discountedPrice : "1000",
+    categoryName: "men",
+    rating : "3"
   },
   {
     _id: uuid(),
-    title: "Think and Grow Rich",
-    author: "Shiv Khera",
-    price: "1000",
-    categoryName: "fiction",
+    name: "Men winter cool Jacket",
+    originalPrice: "3000",
+    discountedPrice : "2500",
+    categoryName: "men",
+    rating : "5"
+  },
+  {
+    _id: uuid(),
+    name: "Women premium Saree",
+    originalPrice: "3000",
+    discountedPrice : "2800",
+    categoryName: "women",
+    rating : "4"
+  },
+  {
+    _id: uuid(),
+    name: "Men stylish casual shoes",
+    originalPrice: "1000",
+    discountedPrice : "700",
+    categoryName: "men",
+    rating : "2"
+  },
+  {
+    _id: uuid(),
+    name: "Women premium shoes",
+    originalPrice: "2000",
+    discountedPrice : "1500",
+    categoryName: "women",
+    rating : "4"
+  },
+  {
+    _id: uuid(),
+    name: "Men formal Jacket",
+    originalPrice: "4000",
+    discountedPrice : "3500",
+    categoryName: "men",
+    rating : "5"
+  },
+  {
+    _id: uuid(),
+    name: "Men sports shoes",
+    originalPrice: "1000",
+    discountedPrice : "500",
+    categoryName: "men",
+    rating : "1"
+  },
+  {
+    _id: uuid(),
+    name: "Women shoes",
+    originalPrice: "1000",
+    discountedPrice : "500",
+    categoryName: "women",
+    rating : "1"
+  },
+  {
+    _id: uuid(),
+    name: "Men formal pants",
+    originalPrice: "3000",
+    discountedPrice : "2500",
+    categoryName: "men",
+    rating : "4"
+  },
+  {
+    _id: uuid(),
+    name: " women Jacket",
+    originalPrice: "3000",
+    discountedPrice : "2000",
+    categoryName: "women",
+    rating : "3"
+  },
+  {
+    _id: uuid(),
+    name: "Men round Tshirt",
+    originalPrice: "700",
+    discountedPrice : "500",
+    categoryName: "men",
+    rating : "5"
   },
 ];
