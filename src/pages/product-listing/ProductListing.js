@@ -114,6 +114,7 @@ const ProductListing = ()=> {
                          {product.name}
                      </p>
                      <p className="price-text margin-top-bottom "> RS <span class = "line-through"> {product.originalPrice}</span> {product.discountedPrice}  </p> 
+            <p className = "margin-top-bottom">Rating : {product.rating}</p>
                  </div>
                  <button className="add-to-cart-btn primary-bg">Add to cart</button>
              </div>})}
