@@ -8,6 +8,10 @@ body {
 
 .product-main-container {
     display: flex;
+<<<<<<< Updated upstream
+=======
+    flex-wrap: wrap;
+>>>>>>> Stashed changes
     margin-left: 10rem;
 }
 

@@ -1,5 +1,6 @@
 import "./Cart.css";
 import productImg from "../../assets/images/product-image.svg"
+<<<<<<< Updated upstream
 
 const Cart = () => {
     return  <div>
@@ -7,6 +8,28 @@ const Cart = () => {
         <ul class="navigation navbar-left flex">
             <li><a href="/index.html" class="nav-pill">Home</a></li>
             <li><a href="/Product-listing-page/products.html" class="nav-pill">Products</a></li>
+=======
+import { useProduct } from "../../contexts/product-context/product-context";
+import { Link } from "react-router-dom";
+
+const Cart = () => {
+    const {cartItems , setCartItems, cartCount , setCartCount} = useProduct()
+
+    function removeFromCertHandler(product){
+        setCartItems(cartItems.filter(item => item._id !== product._id ))
+        setCartCount(prev => prev -1)
+    }
+
+    function addToWishlistHandler(product){
+      
+    }
+
+    return  <div>
+        <header class="header-nav flex">
+        <ul class="navigation navbar-left flex">
+            <li><a href="/index.html" class="nav-pill">Home</a></li>
+            <li><a className="nav-pill active-link"> <Link to="/products" className="nav-pill">Products</Link></a></li>
+>>>>>>> Stashed changes
         </ul>
 
         <input class="search-bar" type="text" placeholder="Search" />
@@ -24,9 +47,15 @@ const Cart = () => {
             </li>
 
             <li>
+<<<<<<< Updated upstream
                 <div class="badge-on-cart cart-icon">
                     <a href="/Cart/cart.html" class="nav-pill"><i class="material-icons"> add_shopping_cart</i></a>
                     <p class="icon-badge aligned-icon">1</p>
+=======
+            <div className="badge-on-cart cart-icon">
+                    <a className="nav-pill"> <Link to="/cart"><i className="material-icons"> add_shopping_cart</i></Link> </a>
+                    <p className="icon-badge aligned-icon">{cartCount}</p>
+>>>>>>> Stashed changes
                 </div>
                 
             </li>
@@ -34,6 +63,7 @@ const Cart = () => {
         </ul>
     </header>
 
+<<<<<<< Updated upstream
     <h1 class="heading-text center-text">My Cart(1)</h1>
     <hr />
     <main class="product-main-container">
@@ -84,6 +114,27 @@ const Cart = () => {
             </div>
 
         </section>
+=======
+    <h1 class="heading-text center-text">My Cart({cartCount})</h1>
+    <hr />
+
+    <main class="product-main-container">
+    {cartItems.map(product => <div class="product-container">
+                    <img class="product-image" src= {productImg} />
+                    <div class="product-info-text">
+                        <p class="info-text">{product.name}</p>
+                        <p class="price-text">
+                       Rs. {product.discountedPrice} <span class="original-price">{product.originalPrice}</span>
+                      </p>
+                      <p class="product-quantity">
+                        Quantity <button class="cart-increment-btn">-</button> 1
+                        <button class="cart-decrement-btn">+</button>
+                      </p>
+                      <button class="remove-cart-btn" onClick={ () => removeFromCertHandler(product)}>Remove from cart</button>
+                      <button class="add-to-wishlist-btn" onClick = {() => addToWishlistHandler}>Add to wishlist</button>
+                    </div>
+                  </div>)}
+>>>>>>> Stashed changes
     </main>
     </div>
 }
