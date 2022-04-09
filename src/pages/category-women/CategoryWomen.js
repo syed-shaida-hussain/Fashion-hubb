@@ -4,12 +4,12 @@ import productImg from "../../assets/images/product-image.svg"
 import "../product-listing/ProductListing.css"
 import { Link } from "react-router-dom"
 
-const CategoryMen = () => {
-    const [categoryMenProducts , setCategoryMenProducts ] = useState([])
+const CategoryWomen = () => {
+    const [categoryWomenProducts , setCategoryWomenProducts ] = useState([])
     useEffect(() => {
         axios.get("/api/products").then((response) => {
             const result = response.data.products
-            setCategoryMenProducts(result.filter(product => product.categoryMen))
+            setCategoryWomenProducts(result.filter(product => product.categoryWomen))
         })
       }, []);
     return <div>
@@ -115,7 +115,7 @@ const CategoryMen = () => {
             </div>
         </aside>
         <main className="products">
-                {categoryMenProducts.map(product => <div className="wishlist-product-container">
+                {categoryWomenProducts.map(product => <div className="wishlist-product-container">
                  <img className="product-image" src= {productImg} alt="product-image" />
  
                  <i className="material-icons like-icon black"> favorite_border</i>
@@ -136,5 +136,5 @@ const CategoryMen = () => {
     </div>
 }
 
-export { CategoryMen}
+export { CategoryWomen }
 

@@ -81,7 +81,7 @@ const LandingPage = () => {
         </div>
         </Link>
 
-      <Link className= "sidebar-nav-link" to = "/home"><div className="product-suggestion flex">
+      <Link className= "sidebar-nav-link" to = "/women"><div className="product-suggestion flex">
             <div className="product-image">
                 <img className="product-suggestion-image" src={productImg} alt="" />
             </div>
