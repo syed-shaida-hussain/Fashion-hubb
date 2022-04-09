@@ -81,7 +81,7 @@ body {
 }
 
 .product-suggestion {
-    width: 45rem;
+    width: 37rem;
     height: 11rem;
     background-color: var(--bg-color);
     margin: 0.5rem;
@@ -119,4 +119,17 @@ body {
     right: 1.8rem;
     bottom: 1.8rem;
     display: inline;
+}
+
+.outline-btn{
+    font-size: 1.1rem;
+    margin-left: 1rem;
+}
+
+.sidebar-nav-link:hover{
+    font-size: 1.1rem;
+}
+
+.nav-pill{
+    cursor: pointer;
 }

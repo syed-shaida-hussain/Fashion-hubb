@@ -1,13 +1,15 @@
 import "./LandingPage.css"
 import landingImg from "../../assets/images/ecommerce-landing-pic.svg"
 import productImg from "../../assets/images/product-image.svg"
+import {Link} from "react-router-dom"
 
 const LandingPage = () => {
+ 
     return <div>
-         <header className="header-nav flex">
+        <header className="header-nav flex">
         <ul className="navigation navbar-left flex">
-            <li><a href="/index.html" className="nav-pill active-link">Home</a></li>
-            <li><a href="/Product-listing-page/products.html" className="nav-pill">Products</a></li>
+            <li><a className="nav-pill active-link">Home</a></li>
+            <li><a className="nav-pill">Products</a></li>
         </ul>
 
         <input className="search-bar" type="text" placeholder="Search" />
@@ -15,18 +17,18 @@ const LandingPage = () => {
         <ul className="navigation navbar-right flex">
             <li>
                 <div className="badge-on-cart wishlist-icon">
-                    <a href="/Wishlist/wishlist.html" className="nav-pill"><i className="material-icons"> favorite_border</i></a>
+                    <a className="nav-pill"><i className="material-icons"> favorite_border</i></a>
                     <p className="icon-badge aligned-icon">5</p>
                 </div>   
             </li>
 
             <li>
-                <a href="/Authentication/login.html" className="nav-pill account-icon"><i class="material-icons"> account_circle</i></a>
+                <a className="nav-pill account-icon"><i class="material-icons"> account_circle</i></a>
             </li>
 
             <li>
                 <div className="badge-on-cart cart-icon">
-                    <a href="/Cart/cart.html" className="nav-pill"><i className="material-icons"> add_shopping_cart</i></a>
+                    <a className="nav-pill"><i className="material-icons"> add_shopping_cart</i></a>
                     <p className="icon-badge aligned-icon">1</p>
                 </div>
                 
@@ -55,9 +57,10 @@ const LandingPage = () => {
                 Try to avail all our offers and enjoy delivery at your door steps.
             </p>
             <p className="line-height">
-                You are ready to go!
-                <span className="highlighted-text">let's bag it.</span>
+                You are ready to go! 
+                <span className="highlighted-text"> let's bag it.</span>
             </p>
+            <button className="outline-btn">Explore</button>
         </div>
 
         <img className="landing-img responsive-img" src= {landingImg} alt="landing-pic" />
@@ -65,29 +68,31 @@ const LandingPage = () => {
     </main>
 
     <footer className="suggestion-container flex">
-        <div className="product-suggestion flex">
+    <Link className="sidebar-nav-link" to= "/men"> <div className="product-suggestion flex" > 
             <div className="product-image">
                 <img className="product-suggestion-image" src={productImg} alt="" />
             </div>
 
             <div className="suggestion-text-container">
-                <p className="suggestion-info line-height">Trending</p>
-                <p className="suggestion-text">Summer collection</p>
+                <p className="suggestion-info line-height">Men's clothing</p>
+                <p className="suggestion-text">Summer collection for Men</p>
                 <p className="line-height">Explore wide range of trending stuff.</p>
             </div>
         </div>
+        </Link>
 
-        <div className="product-suggestion flex">
+      <Link className= "sidebar-nav-link" to = "/home"><div className="product-suggestion flex">
             <div className="product-image">
                 <img className="product-suggestion-image" src={productImg} alt="" />
             </div>
 
             <div className="suggestion-text-container">
-                <p className="suggestion-info line-height">New Arrivals</p>
-                <p className="suggestion-text">Winter collection</p>
-                <p className="line-height">Explore wide range of winter stuff here</p>
+                <p className="suggestion-info line-height">Women's clothing</p>
+                <p className="suggestion-text">Summer collection for Women</p>
+                <p className="line-height">Explore wide range of clothing stuff.</p>
             </div>
         </div>
+        </Link>  
     </footer>
     </div>
 }
