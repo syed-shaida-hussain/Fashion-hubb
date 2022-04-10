@@ -3,12 +3,13 @@ import { v4 as uuid } from "uuid";
 export const products = [
   {
     _id: uuid(),
-    name: "Men premium trending Jacket",
+    name: "Men premium trendy Jacket",
     originalPrice: "2000",
     discountedPrice : "1500",
     categoryMen: true,
     categoryWomen: false,
-    rating : "1"
+    rating : "1",
+    quantity : 1 
   },
   {
     _id: uuid(),
@@ -17,7 +18,8 @@ export const products = [
     discountedPrice : "1000",
     categoryMen: true,
     categoryWomen: false,
-    rating : "1"
+    rating : "1",
+    quantity : 1 
   },
   {
     _id: uuid(),
@@ -26,7 +28,8 @@ export const products = [
     discountedPrice : "2500",
     categoryMen: true,
     categoryWomen: false,
-    rating : "2"
+    rating : "2",
+    quantity : 1 
   },
   {
     _id: uuid(),
@@ -35,7 +38,8 @@ export const products = [
     discountedPrice : "2800",
     categoryMen: false,
     categoryWomen: true,
-    rating : "2"
+    rating : "2",
+    quantity : 1 
   },
   {
     _id: uuid(),
@@ -44,7 +48,8 @@ export const products = [
     discountedPrice : "700",
     categoryMen: true,
     categoryWomen: false,
-    rating : "3"
+    rating : "3",
+    quantity : 1 
   },
   {
     _id: uuid(),
@@ -53,7 +58,8 @@ export const products = [
     discountedPrice : "1500",
     categoryMen: false,
     categoryWomen: true,
-    rating : "3"
+    rating : "3",
+    quantity : 1 
   },
   {
     _id: uuid(),
@@ -62,7 +68,8 @@ export const products = [
     discountedPrice : "3500",
     categoryMen: true,
     categoryWomen: false,
-    rating : "4"
+    rating : "4",
+    quantity : 1 
   },
   {
     _id: uuid(),
@@ -71,7 +78,8 @@ export const products = [
     discountedPrice : "500",
     categoryMen: true,
     categoryWomen: false,
-    rating : "4"
+    rating : "4",
+    quantity : 1 
   },
   {
     _id: uuid(),
@@ -80,7 +88,8 @@ export const products = [
     discountedPrice : "500",
     categoryMen: false,
     categoryWomen: true,
-    rating : "4"
+    rating : "4",
+    quantity : 1 
   },
   {
     _id: uuid(),
@@ -89,7 +98,8 @@ export const products = [
     discountedPrice : "2500",
     categoryMen: true,
     categoryWomen: false,
-    rating : "5"
+    rating : "5",
+    quantity : 1 
   },
   {
     _id: uuid(),
@@ -98,7 +108,8 @@ export const products = [
     discountedPrice : "2000",
     categoryMen: false,
     categoryWomen: true,
-    rating : "5"
+    rating : "5",
+    quantity : 1 
   },
   {
     _id: uuid(),
@@ -107,6 +118,7 @@ export const products = [
     discountedPrice : "500",
     categoryMen: true,
     categoryWomen: false,
-    rating : "5"
-  },
+    rating : "5",
+    quantity : 1 
+  }
 ];
