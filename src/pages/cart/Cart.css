@@ -8,10 +8,7 @@ body {
 
 .product-main-container {
     display: flex;
-<<<<<<< Updated upstream
-=======
     flex-wrap: wrap;
->>>>>>> Stashed changes
     margin-left: 10rem;
 }
 
@@ -21,4 +18,8 @@ body {
 
 .heading-text{
     margin: 2rem;
+}
+
+.cart-increment-btn,.cart-decrement-btn{
+    margin: 0rem 0.5rem;
 }
