@@ -2,6 +2,8 @@ import "./App.css";
 import {ProductListing} from "./pages"
 import {Cart} from "./pages"
 import {Routes , Route} from "react-router-dom"
+import { Wishlist } from "./pages/wishlist/Wishlist";
+import { Routes , Route } from "react-router-dom"
 
 function App() {
   return (
@@ -9,6 +11,7 @@ function App() {
       <Routes>
         <Route path = "/products" element = {<ProductListing />} />
         <Route path = "/cart" element = {<Cart/>} />
+        <Route path = "/wishlist" element = {<Wishlist />} />
       </Routes>
     </div>
   );
