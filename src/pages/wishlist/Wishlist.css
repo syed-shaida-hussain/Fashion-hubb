@@ -1,0 +1,13 @@
+body{
+    background-color: #f9fafb;
+}
+
+.wishlist-main-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.heading-text{
+    margin: 2rem;
+}
