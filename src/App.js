@@ -3,7 +3,6 @@ import {ProductListing} from "./pages"
 import {Cart} from "./pages"
 import {Routes , Route} from "react-router-dom"
 import { Wishlist } from "./pages/wishlist/Wishlist";
-import { Routes , Route } from "react-router-dom"
 
 function App() {
   return (
