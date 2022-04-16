@@ -1,152 +1,77 @@
 import "./Cart.css";
 import productImg from "../../assets/images/product-image.svg"
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-import { useProduct } from "../../contexts/product-context/product-context";
 import { Link } from "react-router-dom";
->>>>>>> Stashed changes
+import { useWishlist } from "../../contexts/wishlist-context/wishlist-context";
+import { useCart } from "../../contexts/cart-context/cart-context";
+import { Header } from "../../components/Header"
 
 const Cart = () => {
-    const {cartItems , setCartItems, cartCount , setCartCount} = useProduct()
+    const {cartItems , setCartItems, cartCount , setCartCount} = useCart()
+    const { wishItems , setWishItems , setWishCount} = useWishlist()
 
-    function removeFromCertHandler(product){
+    function removeFromCartHandler(product){
         setCartItems(cartItems.filter(item => item._id !== product._id ))
-        setCartCount(prev => prev -1)
+        setCartCount(cartCount-product.quantity)
     }
 
-    function addToWishlistHandler(product){
-      
+    function moveToWishlistHandler(product){
+        if(wishItems.find(item => item._id === product._id)) {
+            setWishItems(previousWishItems => previousWishItems.reduce((accum, currentItem) =>  currentItem._id === product._id ? [{...currentItem, quantity: currentItem.quantity + 1 }, ...accum] : [...accum, currentItem],[]));
+        } else {
+            setWishItems([...wishItems , product])
+            setWishCount(prev => prev + 1)
+        }
+    }
+
+    function decrementCartQuantity (product) {
+        if(product.quantity <= 1){
+            setCartItems(cartItems.filter(item => item._id !== product._id ))
+            setCartCount(prev => prev - 1)
+        } else {
+            setCartItems( [...cartItems] , product.quantity  = product.quantity - 1)
+            setCartCount(prev => prev - 1 )
+        }
+    }
+
+    function incrementCartQuantity (product) {
+        setCartItems( [...cartItems] , product.quantity  = product.quantity + 1)
+        setCartCount(prev => prev + 1 )
     }
 
     return  <div>
-        <header class="header-nav flex">
-        <ul class="navigation navbar-left flex">
-            <li><a href="/index.html" class="nav-pill">Home</a></li>
-<<<<<<< Updated upstream
-            <li><a href="/Product-listing-page/products.html" class="nav-pill">Products</a></li>
-=======
-import { useProduct } from "../../contexts/product-context/product-context";
-import { Link } from "react-router-dom";
 
-const Cart = () => {
-    const {cartItems , setCartItems, cartCount , setCartCount} = useProduct()
+        <Header />
 
-    function removeFromCertHandler(product){
-        setCartItems(cartItems.filter(item => item._id !== product._id ))
-        setCartCount(prev => prev -1)
-    }
+    {cartItems.length < 1 && <div className = "center ">
+        <h2 className="margin-top-bottom">Your Shopping Cart is empty !</h2>
+        <button  className="outline-btn"> <Link to ="/products" className="link"> Let's Bag it ! </Link></button>
+    </div>}
 
-    function addToWishlistHandler(product){
-      
-    }
+    {cartItems.length > 0 && <div>
+        <h1 class="heading-text center-text">My Cart({cartCount})</h1>
 
-    return  <div>
-        <header class="header-nav flex">
-        <ul class="navigation navbar-left flex">
-            <li><a href="/index.html" class="nav-pill">Home</a></li>
-            <li><a className="nav-pill active-link"> <Link to="/products" className="nav-pill">Products</Link></a></li>
->>>>>>> Stashed changes
-=======
-            <li><a className="nav-pill active-link"> <Link to="/products" className="nav-pill">Products</Link></a></li>
->>>>>>> Stashed changes
-        </ul>
+        <hr />
 
-        <input class="search-bar" type="text" placeholder="Search" />
-
-        <ul class="navigation navbar-right flex">
-            <li>
-                <div class="badge-on-cart wishlist-icon">
-                    <a href="/Wishlist/wishlist.html" class="nav-pill"><i class="material-icons"> favorite_border</i></a>
-                    <p class="icon-badge aligned-icon">5</p>
-                </div>   
-            </li>
-
-            <li>
-                <a href="/Authentication/login.html" class="nav-pill account-icon"><i class="material-icons"> account_circle</i></a>
-            </li>
-
-            <li>
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                <div class="badge-on-cart cart-icon">
-                    <a href="/Cart/cart.html" class="nav-pill"><i class="material-icons"> add_shopping_cart</i></a>
-                    <p class="icon-badge aligned-icon">1</p>
-=======
-            <div className="badge-on-cart cart-icon">
-                    <a className="nav-pill"> <Link to="/cart"><i className="material-icons"> add_shopping_cart</i></Link> </a>
-                    <p className="icon-badge aligned-icon">{cartCount}</p>
->>>>>>> Stashed changes
-=======
-            <div className="badge-on-cart cart-icon">
-                    <a className="nav-pill"> <Link to="/cart"><i className="material-icons"> add_shopping_cart</i></Link> </a>
-                    <p className="icon-badge aligned-icon">{cartCount}</p>
->>>>>>> Stashed changes
+        <main class="product-main-container">
+            {cartItems.map(product => <div class="product-container">
+                <img class="product-image" src= {productImg} />
+                <div class="product-info-text">
+                    <p class="info-text">{product.name}</p>
+                    <p class="price-text">
+                   Rs. {product.discountedPrice} <span class="original-price">{product.originalPrice}</span>
+                  </p>
+                  <p class="product-quantity">
+                    Qty : <button class="cart-increment-btn" onClick={ () =>  decrementCartQuantity(product) }> - </button> { product.quantity }
+                    <button class="cart-decrement-btn" onClick = { () => incrementCartQuantity(product)}> + </button>
+                  </p>
+                  <button class="remove-cart-btn" onClick={ () => removeFromCartHandler(product)}>Remove from cart</button>
+                  <button class="add-to-wishlist-btn" onClick = {() => moveToWishlistHandler(product)}>Add to wishlist</button>
                 </div>
-                
-            </li>
+              </div>)}
+        </main>
+        </div>}
 
-        </ul>
-    </header>
-
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    <h1 class="heading-text center-text">My Cart(1)</h1>
-=======
-    <h1 class="heading-text center-text">My Cart({cartCount})</h1>
->>>>>>> Stashed changes
-    <hr />
-
-<<<<<<< Updated upstream
-            <div class="flex margin-top-bottom">
-                <p>Discount</p>
-                <p>-Rs 1999</p>
-            </div>
-
-            <div class="flex margin-top-bottom">
-                <p>Delivery charges</p>
-                <p>+Rs 99</p>
-            </div>
-            <hr />
-            <div class="flex margin-top-bottom  bold">
-                <p>Total Amount</p>
-                <p>-Rs 3099</p>
-            </div>
-            <hr />
-            <p class="margin-top-bottom">You will save Rs 1999 on this order</p>
-
-            <div class="btn-container">
-                <button class="place-order-btn">Place order</button>
-            </div>
-
-        </section>
-=======
-    <h1 class="heading-text center-text">My Cart({cartCount})</h1>
-    <hr />
-
-=======
->>>>>>> Stashed changes
-    <main class="product-main-container">
-    {cartItems.map(product => <div class="product-container">
-                    <img class="product-image" src= {productImg} />
-                    <div class="product-info-text">
-                        <p class="info-text">{product.name}</p>
-                        <p class="price-text">
-                       Rs. {product.discountedPrice} <span class="original-price">{product.originalPrice}</span>
-                      </p>
-                      <p class="product-quantity">
-                        Quantity <button class="cart-increment-btn">-</button> 1
-                        <button class="cart-decrement-btn">+</button>
-                      </p>
-                      <button class="remove-cart-btn" onClick={ () => removeFromCertHandler(product)}>Remove from cart</button>
-                      <button class="add-to-wishlist-btn" onClick = {() => addToWishlistHandler}>Add to wishlist</button>
-                    </div>
-                  </div>)}
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-    </main>
+ 
     </div>
 }
 

@@ -23,3 +23,12 @@ body {
 .cart-increment-btn,.cart-decrement-btn{
     margin: 0rem 0.5rem;
 }
+
+.outline-btn{
+    font-size: 1.1rem;
+}
+
+.link{
+    color : var(--primary-color);
+    text-decoration: none;
+}
