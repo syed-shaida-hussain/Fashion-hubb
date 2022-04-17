@@ -17,10 +17,10 @@ ReactDOM.render(
     <CartProvider>
     <WishlistProvider>
     <ProductProvider>
-      <FilterProvider>
-     <App />
-     </FilterProvider>
-     </ProductProvider>
+    <FilterProvider>
+      <App />
+    </FilterProvider>
+    </ProductProvider>
     </WishlistProvider>
     </CartProvider>
     </BrowserRouter>

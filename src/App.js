@@ -1,12 +1,6 @@
 import "./App.css";
-import {ProductListing} from "./pages"
-import {Cart} from "./pages"
-import {Routes , Route} from "react-router-dom"
-import { Wishlist } from "./pages/wishlist/Wishlist";
-import { LandingPage } from "./pages";
-import { CategoryMen } from "./pages/category-men/CategoryMen";
-import { CategoryWomen } from "./pages/category-women/CategoryWomen"
-
+import { ProductListing , Cart, Wishlist , LandingPage , CategoryMen , CategoryWomen  } from "./pages"
+import {Routes , Route } from "react-router-dom"
 
 function App() {
   return (
