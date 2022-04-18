@@ -1,117 +1,160 @@
 import { v4 as uuid } from "uuid";
 
-/**
- * Product Database can be added here.
- * You can add products of your wish with different attributes
- * */
-
 export const products = [
   {
     _id: uuid(),
-    name: "Men premium trending Jacket",
+    name: "Men premium trendy Jacket",
     originalPrice: "2000",
     discountedPrice : "1500",
+    src : { url : "https://picsum.photos/160/173" , alt : "Men's jacket"},
     categoryMen: true,
     categoryWomen: false,
-    rating : "1"
+    cod : true ,
+    fastDelivery : true,
+    rating : "1",
+    quantity : 1 
   },
   {
     _id: uuid(),
     name: "Men premium sports TShirt",
     originalPrice: "1500",
     discountedPrice : "1000",
+    src : {url : "https://picsum.photos/160/173" , alt : "Men's Tshirt"},
     categoryMen: true,
     categoryWomen: false,
-    rating : "1"
+    cod : true ,
+    fastDelivery : true,
+    rating : "1",
+    quantity : 1 
   },
   {
     _id: uuid(),
     name: "Men winter cool Jacket",
     originalPrice: "3000",
     discountedPrice : "2500",
+    src : {url : "https://picsum.photos/160/173" , alt : "Winter jacket"},
     categoryMen: true,
     categoryWomen: false,
-    rating : "2"
+    cod : true ,
+    fastDelivery : false,
+    rating : "2",
+    quantity : 1 
   },
   {
     _id: uuid(),
     name: "Women premium silk Saree",
     originalPrice: "3000",
     discountedPrice : "2800",
+    src : {url : "https://picsum.photos/160/173"  , alt : "Silk saree"},
     categoryMen: false,
     categoryWomen: true,
-    rating : "2"
+    cod : true ,
+    fastDelivery : false,
+    rating : "2",
+    quantity : 1 
   },
   {
     _id: uuid(),
     name: "Men stylish casual shoes",
     originalPrice: "1000",
     discountedPrice : "700",
+    src : {url : "https://picsum.photos/160/173" , alt : "Casual shoes"},
     categoryMen: true,
     categoryWomen: false,
-    rating : "3"
+    cod : true ,
+    fastDelivery : true,
+    rating : "3",
+    quantity : 1 
   },
   {
     _id: uuid(),
     name: "Women premium stylish shoes",
     originalPrice: "2000",
     discountedPrice : "1500",
+    src : {url : "https://picsum.photos/160/173"  , alt : "Formal shoes"},
     categoryMen: false,
     categoryWomen: true,
-    rating : "3"
+    cod : true ,
+    fastDelivery : true,
+    rating : "3",
+    quantity : 1 
   },
   {
     _id: uuid(),
     name: "Men formal quality Jacket",
     originalPrice: "4000",
     discountedPrice : "3500",
+    src : {url : "https://picsum.photos/160/173" , alt : "Formal jacket"},
     categoryMen: true,
     categoryWomen: false,
-    rating : "4"
+    cod : false ,
+    fastDelivery : false,
+    rating : "4",
+    quantity : 1 
   },
   {
     _id: uuid(),
     name: "Men sports durable shoes",
     originalPrice: "1000",
     discountedPrice : "500",
+    src : {url : "https://picsum.photos/160/173"  , alt : "Climbing shoes"},
     categoryMen: true,
     categoryWomen: false,
-    rating : "4"
+    cod : false ,
+    fastDelivery : false,
+    rating : "4",
+    quantity : 1 
   },
   {
     _id: uuid(),
     name: "Women premium party shoes",
     originalPrice: "1000",
     discountedPrice : "500",
+    src : {url : "https://picsum.photos/160/173" , alt : "Women party shoes"},
     categoryMen: false,
     categoryWomen: true,
-    rating : "4"
+    cod : true ,
+    fastDelivery : true,
+    rating : "4",
+    quantity : 1 
   },
   {
     _id: uuid(),
     name: "Men formal premium pants",
     originalPrice: "3000",
     discountedPrice : "2500",
+    src : {url : "https://picsum.photos/160/173" , alt : "Formal pants"},
     categoryMen: true,
     categoryWomen: false,
-    rating : "5"
+    cod : false ,
+    fastDelivery : false,
+    rating : "5",
+    quantity : 1 
   },
   {
     _id: uuid(),
     name: " women casual party Jacket",
     originalPrice: "3000",
     discountedPrice : "2000",
+    src : {url : "https://picsum.photos/160/173" , alt : "Women jacket"},
     categoryMen: false,
     categoryWomen: true,
-    rating : "5"
+    cod : false ,
+    rating : "5",
+    fastDelivery : true,
+    quantity : 1 
   },
   {
     _id: uuid(),
     name: "Men round neck Tshirt",
     originalPrice: "700",
     discountedPrice : "500",
+    src : {url : "https://picsum.photos/160/173" , alt : "Round Tshirt"},
     categoryMen: true,
     categoryWomen: false,
-    rating : "5"
-  },
+    cod : false ,
+    fastDelivery : false,
+    rating : "5",
+    quantity : 1 
+  }
 ];

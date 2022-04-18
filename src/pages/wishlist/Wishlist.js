@@ -1,5 +1,4 @@
 import "./Wishlist.css"
-import productImg from "../../assets/images/product-image.svg"
 import { useWishlist } from "../../contexts/wishlist-context/wishlist-context"
 import { useCart } from "../../contexts/cart-context/cart-context";
 import { Header } from "../../components/Header";
