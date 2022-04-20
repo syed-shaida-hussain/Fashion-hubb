@@ -13,6 +13,7 @@ function App() {
         <Route path = "/home" element = {<LandingPage/>} /> 
         <Route path = "/men" element = {<CategoryMen/>} />
         <Route path = "/women" element={<CategoryWomen/>} />
+
       </Routes>
     </div>
   );
