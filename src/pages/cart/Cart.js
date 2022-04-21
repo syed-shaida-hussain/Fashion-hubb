@@ -1,8 +1,7 @@
 import "./Cart.css";
 import { Link } from "react-router-dom";
-import { useWishlist } from "../../contexts/wishlist-context/wishlist-context";
-import { useCart } from "../../contexts/cart-context/cart-context";
-import { Header } from "../../components/Header"
+import { useWishlist , useCart } from "../../contexts";
+import { Header } from "../../components"
 
 const Cart = () => {
     const {cartItems , setCartItems, cartCount , setCartCount} = useCart()
@@ -53,7 +52,7 @@ const Cart = () => {
 
         <main class="product-main-container">
             {cartItems.map(product => <div class="product-container">
-                <img class="product-image" src= {product.src.url} alt = {product.src.alt} />
+                <img class="product-img" src= {product.src.url} alt = {product.src.alt} />
                 <div class="product-info-text">
                     <p class="info-text">{product.name}</p>
                     <p class="price-text">

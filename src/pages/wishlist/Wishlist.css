@@ -11,3 +11,7 @@ body{
 .heading-text{
     margin: 2rem;
 }
+
+.add-to-cart-btn{
+    margin-bottom: 1px;
+}

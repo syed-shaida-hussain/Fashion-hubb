@@ -7,8 +7,8 @@ const Header = () => {
     const {wishCount} = useWishlist()
     return  <header className="header-nav flex">
     <ul className="navigation navbar-left flex">
-        <li><a href="/index.html" className="nav-pill ">Home</a></li>
-        <li><a className="nav-pill active-link"> <Link to="/products" className="nav-pill active-link">Products</Link></a></li>
+        <li><a className="nav-pill "><Link to = "/" className = "nav-pill">Home</Link></a></li>
+        <li><a className="nav-pill "> <Link to="/products" className="nav-pill ">Products</Link></a></li>
     </ul>
 
     <input className="search-bar" type="text" placeholder="Search" />

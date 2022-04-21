@@ -1,13 +1,9 @@
 import "./ProductListing.css"
 import { useEffect } from "react"
-import { useProduct } from "../../contexts/product-context/product-context"
 import axios from "axios"
-import { useCart } from "../../contexts/cart-context/cart-context"
-import {Header} from "../../components/Header"
-import { useFilters } from "../../contexts/filter-context/filter-context"
-import {getFilteredData} from "../../utils/filter-data"
-import {getSortedData} from "../../utils/sort-data"
-import {Filters} from "../../components/Filters"
+import { useFilters , useCart , useProduct } from "../../contexts"
+import {getFilteredData , getSortedData} from "../../utils"
+import {Filters , Header} from "../../components"
 
 const ProductListing = ()=> {
 
@@ -43,7 +39,7 @@ const ProductListing = ()=> {
     
     <section className="page-container flex-page">
 
-      <Filters />
+    <Filters />
 
         <main className="products">
 

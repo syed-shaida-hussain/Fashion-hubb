@@ -11,7 +11,7 @@ const Filters = () => {
             <a className="clear-link margin-right margin-bottom margin-top" onClick = {() => dispatch({type : "CLEAR"})}>Clear</a>
         </div>
         <div className="filter">
-            <p className="filter-heading-text margin-left">Category</p>
+            <p className="filter-heading-text margin-left">Services : </p>
             <div className="flex">
                 <input className="margin-left margin-top margin-bottom" id="category-checkbox1" name = "category"
                     type="checkbox" checked={showCodOnly}

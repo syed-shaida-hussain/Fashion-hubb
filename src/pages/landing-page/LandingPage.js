@@ -1,41 +1,15 @@
 import "./LandingPage.css"
 import landingImg from "../../assets/images/ecommerce-landing-pic.svg"
 import productImg from "../../assets/images/product-image.svg"
+import coverImg from "../../assets/images/ecom-cover-img.jpg"
+import {Header } from "../../components"
 import {Link} from "react-router-dom"
 
 const LandingPage = () => {
  
-    return <div>
-        <header className="header-nav flex">
-        <ul className="navigation navbar-left flex">
-            <li><a className="nav-pill active-link">Home</a></li>
-            <li><a className="nav-pill">Products</a></li>
-        </ul>
+    return <div  style = {{backgroundImage: `url(${coverImg})`}}>
 
-        <input className="search-bar" type="text" placeholder="Search" />
-
-        <ul className="navigation navbar-right flex">
-            <li>
-                <div className="badge-on-cart wishlist-icon">
-                    <a className="nav-pill"><i className="material-icons"> favorite_border</i></a>
-                    <p className="icon-badge aligned-icon">5</p>
-                </div>   
-            </li>
-
-            <li>
-                <a className="nav-pill account-icon"><i class="material-icons"> account_circle</i></a>
-            </li>
-
-            <li>
-                <div className="badge-on-cart cart-icon">
-                    <a className="nav-pill"><i className="material-icons"> add_shopping_cart</i></a>
-                    <p className="icon-badge aligned-icon">1</p>
-                </div>
-                
-            </li>
-
-        </ul>
-    </header>
+    <Header />
 
     <main className="home-main">
         <div className="welcome-text">
@@ -60,7 +34,7 @@ const LandingPage = () => {
                 You are ready to go! 
                 <span className="highlighted-text"> let's bag it.</span>
             </p>
-            <button className="outline-btn">Explore</button>
+            <button className="outline-btn"> <Link to ="/products" className="link"> Explore Products </Link></button>
         </div>
 
         <img className="landing-img responsive-img" src= {landingImg} alt="landing-pic" />
