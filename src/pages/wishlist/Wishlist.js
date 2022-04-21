@@ -31,7 +31,7 @@ const Wishlist = () => {
         <button  className="outline-btn"> <Link to ="/cart" className="link"> Add items from Cart </Link></button>
     </div>}
 
-    {wishItems.length > 1 && <div>
+    {wishItems.length > 0 && <div>
         <h1 class="heading-text center-text">My Wishlist({wishCount})</h1>
 
     <hr />
