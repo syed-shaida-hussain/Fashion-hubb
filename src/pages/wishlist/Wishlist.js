@@ -1,25 +1,22 @@
 import "./Wishlist.css"
 import { Link } from "react-router-dom";
-import { useWishlist , useCart  } from "../../contexts"
 import { Header } from "../../components";
+import { useServices } from "../../contexts/productContext/productContext";
 
 const Wishlist = () => {
-    const {wishCount , wishItems , setWishItems , setWishCount} = useWishlist()
-    const {cartItems , setCartItems , setCartCount} = useCart()
+   
+     const { serviceState : {wishItems , cartItems} , dispatchService} = useServices()
 
     function moveToCartHandler(product){
         if(cartItems.find(item => item._id === product._id)) {
-            setCartItems(previousCartItems => previousCartItems.reduce((accum, currentItem) =>  currentItem._id === product._id ? [{...currentItem, quantity: currentItem.quantity + 1 }, ...accum] : [...accum, currentItem],[]));
-            setCartCount(prev => prev + 1)
+            dispatchService({type : "INCREMENT_CART" , payload : product})
         } else  {
-            setCartItems([...cartItems , product ])
-            setCartCount(prev => prev + product.quantity)
+            dispatchService({type : "ADD_TO_CART" , payload : product})
         }
     }
 
     function removeFromWishlistHandler(product) {
-        setWishCount(prev => prev - 1)
-        setWishItems(wishItems.filter(item => item._id !== product._id))
+        dispatchService({type : "DELETE_FROM_WISHLIST" , payload : product})
     }
     
     return <div>
@@ -32,7 +29,7 @@ const Wishlist = () => {
     </div>}
 
     {wishItems.length > 0 && <div>
-        <h1 class="heading-text center-text">My Wishlist({wishCount})</h1>
+        <h1 class="heading-text center-text">My Wishlist({wishItems.length})</h1>
 
     <hr />
 

@@ -33,3 +33,7 @@ body {
     color : var(--primary-color);
     text-decoration: none;
 }
+
+.price-details{
+    height: fit-content;
+}

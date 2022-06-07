@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
-import {useCart} from "../contexts/cart-context/cart-context"
-import {useWishlist} from "../contexts/wishlist-context/wishlist-context"
+import { useServices } from "../contexts/productContext/productContext";
 
 const Header = () => {
-    const {cartCount} = useCart()
-    const {wishCount} = useWishlist()
+    const { serviceState : { cartItems , wishItems } , dispatchService } = useServices()
     return  <header className="header-nav flex">
     <ul className="navigation navbar-left flex">
         <li><a className="nav-pill "><Link to = "/" className = "nav-pill">Home</Link></a></li>
@@ -17,7 +15,7 @@ const Header = () => {
         <li>
             <div className="badge-on-cart wishlist-icon">
                 <a className="nav-pill"> <Link to= "/wishlist"><i className="material-icons"> favorite_border</i></Link> </a>
-                <p className="icon-badge aligned-icon">{wishCount}</p>
+                <p className="icon-badge aligned-icon">{wishItems.length}</p>
             </div>   
         </li>
 
@@ -28,7 +26,7 @@ const Header = () => {
         <li>
             <div className="badge-on-cart cart-icon">
                 <a className="nav-pill"> <Link to="/cart"><i className="material-icons"> add_shopping_cart</i></Link> </a>
-                <p className="icon-badge aligned-icon">{cartCount}</p>
+                <p className="icon-badge aligned-icon">{cartItems.length}</p>
             </div>
             
         </li>
