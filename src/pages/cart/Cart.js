@@ -1,39 +1,34 @@
 import "./Cart.css";
 import { Link } from "react-router-dom";
-import { useWishlist , useCart } from "../../contexts";
 import { Header } from "../../components"
+import { useServices } from "../../contexts/productContext/productContext";
 
 const Cart = () => {
-    const {cartItems , setCartItems, cartCount , setCartCount} = useCart()
-    const { wishItems , setWishItems , setWishCount} = useWishlist()
+    const { serviceState : {cartItems , totalPrice , wishItems} , dispatchService } = useServices()
 
     function removeFromCartHandler(product){
-        setCartItems(cartItems.filter(item => item._id !== product._id ))
-        setCartCount(cartCount-product.quantity)
+        dispatchService({type : "DELETE_FROM_CART" , payload : product})
     }
 
     function moveToWishlistHandler(product){
         if(wishItems.find(item => item._id === product._id)) {
-            setWishItems(previousWishItems => previousWishItems.reduce((accum, currentItem) =>  currentItem._id === product._id ? [{...currentItem, quantity: currentItem.quantity + 1 }, ...accum] : [...accum, currentItem],[]));
+            dispatchService({type : "default"})
         } else {
-            setWishItems([...wishItems , product])
-            setWishCount(prev => prev + 1)
+            dispatchService({type : "ADD_TO_WISHLIST" , payload : product})
         }
     }
 
     function decrementCartQuantity (product) {
         if(product.quantity <= 1){
-            setCartItems(cartItems.filter(item => item._id !== product._id ))
-            setCartCount(prev => prev - 1)
+            dispatchService({type: "DELETE_FROM_CART" , payload : product})
         } else {
-            setCartItems( [...cartItems] , product.quantity  = product.quantity - 1)
-            setCartCount(prev => prev - 1 )
+            dispatchService({type: "DECREMENT_CART" , payload : product})
         }
+        
     }
 
     function incrementCartQuantity (product) {
-        setCartItems( [...cartItems] , product.quantity  = product.quantity + 1)
-        setCartCount(prev => prev + 1 )
+        dispatchService({type : "INCREMENT_CART" , payload : product}) 
     }
 
     return  <div>
@@ -46,7 +41,7 @@ const Cart = () => {
     </div>}
 
     {cartItems.length > 0 && <div>
-        <h1 class="heading-text center-text">My Cart({cartCount})</h1>
+        <h1 class="heading-text center-text">My Cart({cartItems.length})</h1>
 
         <hr />
 
@@ -65,7 +60,31 @@ const Cart = () => {
                   <button class="remove-cart-btn" onClick={ () => removeFromCartHandler(product)}>Remove from cart</button>
                   <button class="add-to-wishlist-btn" onClick = {() => moveToWishlistHandler(product)}>Add to wishlist</button>
                 </div>
+               
               </div>)}
+            <section class="price-details">
+            <p class="margin-top-bottom">PRICE DETAILS</p>
+            <hr />
+            <div class="flex margin-top-bottom">
+                <p>Price ({cartItems.length} items)</p>
+                <p>Rs {totalPrice}</p>
+            </div>
+
+            <div class="flex margin-top-bottom">
+                <p>Delivery charges</p>
+                <p>+Rs 99</p>
+            </div>
+            <hr />
+            <div class="flex margin-top-bottom  bold">
+                <p>Total Amount</p>
+                <p>Rs {totalPrice +99 }</p>
+            </div>
+            <hr />
+            <div class="btn-container">
+                <button class="place-order-btn">Place order</button>
+            </div>
+
+        </section>
         </main>
         </div>}
 

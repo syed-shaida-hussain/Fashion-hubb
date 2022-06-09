@@ -4,33 +4,32 @@ import axios from "axios"
 import { useFilters , useCart , useProduct } from "../../contexts"
 import {getFilteredData , getSortedData} from "../../utils"
 import {Filters , Header} from "../../components"
+import { useServices } from "../../contexts/productContext/productContext"
 
 const ProductListing = ()=> {
 
-  const { setProductList, productList } = useProduct()
-  const { setCartItems , cartItems , setCartCount } = useCart()
-  const {sortBy , rateBy , showFastDeliveryOnly , showCodOnly , dispatch } = useFilters()
+  const { serviceState : {products , cartItems} , dispatchService } = useServices()
+  const {sortBy , rateBy , showFastDeliveryOnly , showCodOnly  } = useFilters()
 
   useEffect(() => {
     axios.get("/api/products").then((response) => {
-      setProductList(response.data.products);
+      dispatchService({type : "SET_PRODUCTS" , payload : response.data.products})
     });
   }, []);
 
     function addToCartHandler(product){
       if(cartItems.find(cartItem => cartItem._id === product._id )){
-        setCartItems(previousCartItems => previousCartItems.reduce((accum, currentItem) =>  currentItem._id === product._id ? [{...currentItem, quantity: currentItem.quantity + 1 }, ...accum] : [...accum, currentItem],[]));
+        dispatchService({type : "INCREMENT_CART" , payload : product})
         } else
-          setCartItems(previousCartItems => [product, ...previousCartItems])
-          setCartCount(prev => prev + 1)
+          dispatchService({type : "ADD_TO_CART" , payload : product})
     }
 
       function getAllFilteredData (sortedList , filteredList, {showCodOnly , showFastDeliveryOnly}) {
         return filteredList.filter(({cod}) => showCodOnly ? cod : true ).filter(({fastDelivery}) => showFastDeliveryOnly ? fastDelivery :true)
       }
     
-      const sortedData = getSortedData(productList, sortBy);
-      const filteredData = getFilteredData(productList , rateBy)
+      const sortedData = getSortedData(products, sortBy);
+      const filteredData = getFilteredData(products , rateBy)
       const finalFilteredData = getAllFilteredData(sortedData, filteredData , {showCodOnly , showFastDeliveryOnly}  );
    
     return <div>
@@ -57,7 +56,7 @@ const ProductListing = ()=> {
                      <p className = "margin-top-bottom">Rating : {product.rating}</p>
                      <p> {product.fastDelivery  ?  <p className="badge">Fast delivery</p> : <p className = "hide">.</p>}</p>
                  </div>
-                 <button onClick={ () =>addToCartHandler(product) } className="add-to-cart-btn primary-bg">Add to cart</button>
+                 <button onClick={ () => addToCartHandler(product) } className="add-to-cart-btn primary-bg">Add to cart</button>
              </div>)})}
         </main>
     </section>

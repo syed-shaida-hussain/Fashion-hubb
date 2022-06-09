@@ -3,12 +3,13 @@ import {useEffect , useState } from "react"
 import axios from "axios"
 import {Filters , Header} from "../../components"
 import {getFilteredData , getSortedData} from "../../utils"
-import { useFilters , useCart } from "../../contexts"
+import { useFilters , useServices } from "../../contexts"
 
 const CategoryMen = () => {
     const [categoryMenProducts , setCategoryMenProducts ] = useState([])
     const {sortBy , rateBy , showFastDeliveryOnly , showCodOnly  } = useFilters()
-    const { setCartItems , cartItems , setCartCount } = useCart()
+    const { serviceState : { cartItems } , dispatchService } = useServices()
+
     useEffect(() => {
         axios.get("/api/products").then((response) => {
             const result = response.data.products
@@ -18,10 +19,9 @@ const CategoryMen = () => {
 
       function addToCartHandler(product){
         if(cartItems.find(cartItem => cartItem._id === product._id )){
-          setCartItems(previousCartItems => previousCartItems.reduce((accum, currentItem) =>  currentItem._id === product._id ? [{...currentItem, quantity: currentItem.quantity + 1 }, ...accum] : [...accum, currentItem],[]));
+          dispatchService({type : "INCREMENT_CART" , payload : product})
           } else
-            setCartItems(previousCartItems => [product, ...previousCartItems])
-            setCartCount(prev => prev + 1)
+            dispatchService({type : "ADD_TO_CART" , payload : product})
       }
 
       function getAllFilteredData (sortedList , filteredList, {showCodOnly , showFastDeliveryOnly}) {
