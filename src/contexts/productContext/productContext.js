@@ -3,8 +3,6 @@ import { serviceReducer } from "../../reducers/service-reducer/service-reducer"
 
 const ServiceContext = createContext()
 
-
-
 const ServiceProvider = ({children}) => {
 
     const [serviceState  , dispatchService] = useReducer(serviceReducer ,  { products : [] , cartItems : [] , wishItems : [] , totalPrice : 0 })
