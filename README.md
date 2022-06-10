@@ -1,3 +1,4 @@
-## E-Commerce Backend
+## Fashion Hub
 
-This folder contains the Mock Backend created for E-Commerce App. It contains different API end-points and database configuration for building E-Commerce; so that you can focus on building Frontend.
+Fashion Hub is a web app made with reactJs with basic routing , reducer and context. Here you can explore a wide range of clothing. So, are you ready to avail our offers and enjoy delivery at your door steps.
+You are ready to go! let's bag it.
