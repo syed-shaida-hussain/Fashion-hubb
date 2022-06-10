@@ -19,9 +19,9 @@ const Header = () => {
             </div>   
         </li>
 
-        <li>
+        {/* <li>
             <a href="/Authentication/login.html" className="nav-pill account-icon"><i className="material-icons"> account_circle</i></a>
-        </li>
+        </li> */}
 
         <li>
             <div className="badge-on-cart cart-icon">
