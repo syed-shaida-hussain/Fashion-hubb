@@ -1,4 +1,7 @@
+import { useFilters } from "../contexts";
+
 function getFilteredData(filteredList, rateBy) {
+    const {price} = useFilters()
     if (rateBy && rateBy === "4_STARS_AND_ABOVE") {
         return filteredList.filter((item) => item.rating >= 4)
     } 
@@ -10,6 +13,10 @@ function getFilteredData(filteredList, rateBy) {
     }
     if (rateBy && rateBy === "1_STARS_AND_ABOVE") {
         return filteredList.filter((item) => item.rating >= 1);
+    }
+    if (rateBy && rateBy === "PRICE") {
+        console.log("price" , price)
+        return filteredList.filter((item) => item.discountedPrice >= price)
     }
     return filteredList;
   }

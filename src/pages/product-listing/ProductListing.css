@@ -37,7 +37,7 @@
 }
 
 .filters {
-    width: 17rem;
+    width: 18rem;
 }
 
 .black{
@@ -90,6 +90,11 @@
     background-color: var(--primary-color);
 }
 
+.product-img{
+    width: 10rem;
+    height: 10.8rem;
+}
+
 input[type="range"] {
     -webkit-appearance: none;
 }
@@ -114,4 +119,13 @@ input[type="range"]::-webkit-slider-thumb {
 
 input[type="checkbox"] {
     zoom: 1.5;
+}
+
+.price-input {
+    width: 12rem;
+    margin-left: 0.9rem;
+  }
+
+.margin{
+    margin: 0rem 1rem 1rem 1rem;
 }

@@ -1,7 +1,7 @@
 import "./ProductListing.css"
 import { useEffect } from "react"
 import axios from "axios"
-import { useFilters , useCart , useProduct } from "../../contexts"
+import { useFilters } from "../../contexts"
 import {getFilteredData , getSortedData} from "../../utils"
 import {Filters , Header} from "../../components"
 import { useServices } from "../../contexts/productContext/productContext"
@@ -9,7 +9,7 @@ import { useServices } from "../../contexts/productContext/productContext"
 const ProductListing = ()=> {
 
   const { serviceState : {products , cartItems} , dispatchService } = useServices()
-  const {sortBy , rateBy , showFastDeliveryOnly , showCodOnly  } = useFilters()
+  const {sortBy , rateBy , showFastDeliveryOnly , showCodOnly , showCategoryMen ,showCategoryWomen } = useFilters()
 
   useEffect(() => {
     axios.get("/api/products").then((response) => {
@@ -24,13 +24,13 @@ const ProductListing = ()=> {
           dispatchService({type : "ADD_TO_CART" , payload : product})
     }
 
-      function getAllFilteredData (sortedList , filteredList, {showCodOnly , showFastDeliveryOnly}) {
-        return filteredList.filter(({cod}) => showCodOnly ? cod : true ).filter(({fastDelivery}) => showFastDeliveryOnly ? fastDelivery :true)
+      function getAllFilteredData (sortedList , filteredList, {showCodOnly , showFastDeliveryOnly , showCategoryMen }) {
+        return filteredList.filter(({cod}) => showCodOnly ? cod : true ).filter(({fastDelivery}) => showFastDeliveryOnly ? fastDelivery :true).filter(({categoryMen}) => showCategoryMen ? categoryMen : true).filter(({categoryWomen}) => showCategoryWomen ? categoryWomen : true)
       }
     
       const sortedData = getSortedData(products, sortBy);
-      const filteredData = getFilteredData(products , rateBy)
-      const finalFilteredData = getAllFilteredData(sortedData, filteredData , {showCodOnly , showFastDeliveryOnly}  );
+      const filteredData = getFilteredData(products , rateBy )
+      const finalFilteredData = getAllFilteredData(sortedData, filteredData , {showCodOnly , showFastDeliveryOnly , showCategoryMen , showCategoryWomen} );
    
     return <div>
       
