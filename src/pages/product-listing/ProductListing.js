@@ -1,15 +1,15 @@
 import "./ProductListing.css"
 import { useEffect } from "react"
 import axios from "axios"
-import { useFilters , useCart , useProduct } from "../../contexts"
+import { useFilters } from "../../contexts"
 import {getFilteredData , getSortedData} from "../../utils"
 import {Filters , Header} from "../../components"
 import { useServices } from "../../contexts/productContext/productContext"
 
-const ProductListing = ()=> {
+const ProductListing = () => {
 
-  const { serviceState : {products , cartItems} , dispatchService } = useServices()
-  const {sortBy , rateBy , showFastDeliveryOnly , showCodOnly  } = useFilters()
+  const { serviceState : {products , cartItems , wishItems} , dispatchService } = useServices()
+  const {sortBy , rateBy , filterBy , showFastDeliveryOnly , showCodOnly , showCategoryMen ,showCategoryWomen } = useFilters()
 
   useEffect(() => {
     axios.get("/api/products").then((response) => {
@@ -24,13 +24,21 @@ const ProductListing = ()=> {
           dispatchService({type : "ADD_TO_CART" , payload : product})
     }
 
-      function getAllFilteredData (sortedList , filteredList, {showCodOnly , showFastDeliveryOnly}) {
-        return filteredList.filter(({cod}) => showCodOnly ? cod : true ).filter(({fastDelivery}) => showFastDeliveryOnly ? fastDelivery :true)
+    function moveToWishlistHandler(product){
+      if(wishItems.find(item => item._id === product._id)) {
+          dispatchService({type : "default"})
+      } else {
+          dispatchService({type : "ADD_TO_WISHLIST" , payload : product})
+      }
+  }
+
+      function getAllFilteredData (sortedList , filteredList, {showCodOnly , showFastDeliveryOnly , showCategoryMen }) {
+        return filteredList.filter(({cod}) => showCodOnly ? cod : true ).filter(({fastDelivery}) => showFastDeliveryOnly ? fastDelivery :true).filter(({categoryMen}) => showCategoryMen ? categoryMen : true).filter(({categoryWomen}) => showCategoryWomen ? categoryWomen : true)
       }
     
       const sortedData = getSortedData(products, sortBy);
-      const filteredData = getFilteredData(products , rateBy)
-      const finalFilteredData = getAllFilteredData(sortedData, filteredData , {showCodOnly , showFastDeliveryOnly}  );
+      const filteredData = getFilteredData(products , filterBy , rateBy)
+      const finalFilteredData = getAllFilteredData(sortedData, filteredData , {showCodOnly , showFastDeliveryOnly , showCategoryMen , showCategoryWomen} );
    
     return <div>
       
@@ -45,8 +53,9 @@ const ProductListing = ()=> {
             {finalFilteredData.map(product  => {
                  return (<div key = {product._id} className="wishlist-product-container">
                  <img className="product-img" src= {product.src.url} alt={product.src.alt} />
+                 {wishItems.find((item) => item._id === product._id) ? <i className="material-icons like-icon " onClick = {() => dispatchService({type : "DELETE_FROM_WISHLIST" , payload : product})} > favorite</i> :  <i className="material-icons like-icon black" onClick = {() => moveToWishlistHandler(product)}> favorite_border</i>}
  
-                 <i className="material-icons like-icon black"> favorite_border</i>
+                
  
                  <div className="wishlist-product-info">
                      <p className="wishlist-info-text margin-top-bottom ">
