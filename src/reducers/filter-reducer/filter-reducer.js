@@ -1,10 +1,11 @@
 function filterReducer(state, action) {
   switch (action.type) {
-    case "PRICE":
-      return (state = {
+    case "PRICE_RANGE_CHANGE":
+      return  {
         ...state,
-        price : action.payload,
-      });
+        price : action.payload1,
+        filterBy : action.payload2
+      };
     case "COD":
       return (state = {
         ...state,
@@ -32,7 +33,7 @@ function filterReducer(state, action) {
       };
     case "RATE":
       return {
-        ...state, 
+        ...state,
         rateBy: action.payload,
       };
     case "CLEAR":

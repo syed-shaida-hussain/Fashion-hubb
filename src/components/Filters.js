@@ -2,12 +2,7 @@ import {useFilters } from "../contexts/filter-context/filter-context"
  
 const Filters = () => {
 
-    const {sortBy , rateBy , showFastDeliveryOnly , showCodOnly , showCategoryMen , showCategoryWomen , price , dispatch } = useFilters()
-
-    const priceChangeHandler = (value) => {
-        dispatch({ type: "PRICE", payload: value });
-        dispatch({ type : "RATE" , payload : "PRICE"})
-      };
+    const {sortBy , rateBy , filterBy , showFastDeliveryOnly , showCodOnly , showCategoryMen , showCategoryWomen , price , dispatch } = useFilters()
 
     return (
         <aside className="filters">
@@ -15,30 +10,76 @@ const Filters = () => {
             <p className="filter-heading margin-left margin-bottom margin-top">Filters</p>
             <a className="clear-link margin-right margin-bottom margin-top" onClick = {() => dispatch({type : "CLEAR"})}>Clear</a>
         </div>
+
+    <form>
+        <fieldset id = "range-input">
         <input
+          id = "price"
           type="range"
           list="price-range"
-          min={0}
+          min={500}
           max={4000}
-          step={1000}
+          step={875}
           value={price}
+          name = "price"
           className="price-input"
-          onChange={e => priceChangeHandler(e.target.value)}
+          checked = {filterBy && filterBy === "PRICE_FILTER"}
+          onChange={(e) => {dispatch({ type: "PRICE_RANGE_CHANGE", payload1: e.target.value , payload2 : "PRICE_FILTER" })}}
         />
         <datalist id="price-range">
-          <option value="0" label="0"></option>
+          <option value="500" label="500"></option>
           <option value="1000"></option>
           <option value="2000" label="2000"></option>
           <option value="3000"></option>
           <option value="4000" label = "4000"></option>
         </datalist>
         <div className="flex margin">
-          <span className="price-range-txt">0</span>
-          <span className="price-range-txt">1k</span>
-          <span className="price-range-txt">2k</span>
-          <span className="price-range-txt">3k</span>
-          <span className="price-range-txt">4k</span>
+          <span>0</span>
+          <span>1k</span>
+          <span>2k</span>
+          <span>3k</span>
+          <span>4k</span>
         </div>
+
+        </fieldset>
+        <p className="filter-heading-text margin-left">Rating :</p>
+        <fieldset id = "ratings">
+        <div className="rating margin-top">
+                <input id="rating1" className="margin-left" name="ratings" type="radio" onChange={() =>
+            dispatch({ type: "RATE", payload: "4_STARS_AND_ABOVE" })
+            }
+            checked={rateBy && rateBy === "4_STARS_AND_ABOVE"} />
+                <label for="rating1"> 4 stars and above </label>
+            </div>
+            <div className="rating">
+                <input id="rating2" className="margin-left" name="ratings" type="radio" onChange={() =>
+            dispatch({ type: "RATE", payload: "3_STARS_AND_ABOVE" })
+            }
+            checked={rateBy && rateBy === "3_STARS_AND_ABOVE"}  />
+                <label for="rating2"> 3 stars and above</label>
+            </div>
+            <div className="rating">
+                <input id="rating3" className="margin-left" name="ratings" type="radio" onChange={() =>
+            dispatch({ type: "RATE", payload: "2_STARS_AND_ABOVE" })
+            }
+            checked={rateBy && rateBy === "2_STARS_AND_ABOVE"}  />
+                <label for="rating3"> 2 stars and above</label>
+            </div>
+            <div className="rating">
+                <input id="rating4" className="margin-left" name="ratings" type="radio" onChange={() =>
+            dispatch({ type: "RATE", payload: "1_STARS_AND_ABOVE" })
+            }
+            checked={rateBy && rateBy === "1_STARS_AND_ABOVE"} />
+                <label for="rating4"> 1 stars and above</label>
+            </div>
+        </fieldset>
+    </form>
+   
+
+        
+
+
+
 
         <div className="filter">
                 <p className="filter-heading-text margin-left">Category</p>
@@ -76,36 +117,9 @@ const Filters = () => {
                     Delivery 🚚</label>
             </div>
         </div>
+ 
 
-        <p className="filter-heading-text margin-left">Rating :</p>
-        <div className="rating margin-top">
-            <input id="rating1" className="margin-left" name="ratings" type="radio" onChange={() =>
-          dispatch({ type: "RATE", payload: "4_STARS_AND_ABOVE" })
-        }
-        checked={rateBy && rateBy === "4_STARS_AND_ABOVE"} />
-            <label for="rating1"> 4 stars and above </label>
-        </div>
-        <div className="rating">
-            <input id="rating2" className="margin-left" name="ratings" type="radio" onChange={() =>
-          dispatch({ type: "RATE", payload: "3_STARS_AND_ABOVE" })
-        }
-        checked={rateBy && rateBy === "3_STARS_AND_ABOVE"}  />
-            <label for="rating2"> 3 stars and above</label>
-        </div>
-        <div className="rating">
-            <input id="rating3" className="margin-left" name="ratings" type="radio" onChange={() =>
-          dispatch({ type: "RATE", payload: "2_STARS_AND_ABOVE" })
-        }
-        checked={rateBy && rateBy === "2_STARS_AND_ABOVE"}  />
-            <label for="rating3"> 2 stars and above</label>
-        </div>
-        <div className="rating">
-            <input id="rating4" className="margin-left" name="ratings" type="radio" onChange={() =>
-          dispatch({ type: "RATE", payload: "1_STARS_AND_ABOVE" })
-        }
-        checked={rateBy && rateBy === "1_STARS_AND_ABOVE"} />
-            <label for="rating4"> 1 stars and above</label>
-        </div>
+
         <p className="filter-heading-text margin-left">Sort by :</p>
         <div className="rating">
             <input id="price-filter1" className="margin-left" name="sort" type="radio" onChange={() =>

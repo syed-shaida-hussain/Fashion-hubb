@@ -6,10 +6,10 @@ import {getFilteredData , getSortedData} from "../../utils"
 import {Filters , Header} from "../../components"
 import { useServices } from "../../contexts/productContext/productContext"
 
-const ProductListing = ()=> {
+const ProductListing = () => {
 
   const { serviceState : {products , cartItems} , dispatchService } = useServices()
-  const {sortBy , rateBy , showFastDeliveryOnly , showCodOnly , showCategoryMen ,showCategoryWomen } = useFilters()
+  const {sortBy , rateBy , filterBy , showFastDeliveryOnly , showCodOnly , showCategoryMen ,showCategoryWomen } = useFilters()
 
   useEffect(() => {
     axios.get("/api/products").then((response) => {
@@ -29,7 +29,7 @@ const ProductListing = ()=> {
       }
     
       const sortedData = getSortedData(products, sortBy);
-      const filteredData = getFilteredData(products , rateBy )
+      const filteredData = getFilteredData(products , filterBy , rateBy)
       const finalFilteredData = getAllFilteredData(sortedData, filteredData , {showCodOnly , showFastDeliveryOnly , showCategoryMen , showCategoryWomen} );
    
     return <div>
