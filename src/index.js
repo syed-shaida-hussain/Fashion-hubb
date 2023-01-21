@@ -5,6 +5,7 @@ import App from "./App";
 import { makeServer } from "./server";
 import {BrowserRouter} from "react-router-dom"
 import { FilterProvider , ServiceProvider } from "./contexts";
+import { ToastProvider } from "./contexts/toast-context/toast-context";
 
 makeServer();
 
@@ -13,7 +14,9 @@ ReactDOM.render(
     <ServiceProvider>
     <BrowserRouter>
     <FilterProvider>
+    <ToastProvider>
       <App />
+    </ToastProvider>
     </FilterProvider>
     </BrowserRouter>
     </ServiceProvider>

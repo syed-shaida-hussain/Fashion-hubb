@@ -2,12 +2,19 @@ import "./Cart.css";
 import { Link } from "react-router-dom";
 import { Header } from "../../components"
 import { useServices } from "../../contexts/productContext/productContext";
+import { Toast } from "../../components/Toast";
+import { useToast } from "../../contexts/toast-context/toast-context";
 
 const Cart = () => {
     const { serviceState : {cartItems , totalPrice , wishItems} , dispatchService } = useServices()
+    const {toastState : { isToastActive} , dispatchToast} = useToast()
 
     function removeFromCartHandler(product){
         dispatchService({type : "DELETE_FROM_CART" , payload : product})
+        dispatchToast({type : "SHOW_TOAST" , payload : "Item Removed from Cart successfully!"})
+        setTimeout(() => {
+          dispatchToast({type : "HIDE_TOAST" , payload : ""})
+        },2000)
     }
 
     function moveToWishlistHandler(product){
@@ -15,20 +22,36 @@ const Cart = () => {
             dispatchService({type : "default"})
         } else {
             dispatchService({type : "ADD_TO_WISHLIST" , payload : product})
+            dispatchToast({type : "SHOW_TOAST" , payload : "Item Added to Wishlist successfully!"})
+            setTimeout(() => {
+              dispatchToast({type : "HIDE_TOAST" , payload : ""})
+            },2000)
         }
     }
 
     function decrementCartQuantity (product) {
         if(product.quantity <= 1){
             dispatchService({type: "DELETE_FROM_CART" , payload : product})
+            dispatchToast({type : "SHOW_TOAST" , payload : "Item Removed from Cart successfully!"})
+            setTimeout(() => {
+              dispatchToast({type : "HIDE_TOAST" , payload : ""})
+            },3000)
         } else {
             dispatchService({type: "DECREMENT_CART" , payload : product})
+            dispatchToast({type : "SHOW_TOAST" , payload : "Item Quantity updated successfully!"})
+            setTimeout(() => {
+              dispatchToast({type : "HIDE_TOAST" , payload : ""})
+            },2000)
         }
         
     }
 
     function incrementCartQuantity (product) {
         dispatchService({type : "INCREMENT_CART" , payload : product}) 
+        dispatchToast({type : "SHOW_TOAST" , payload : "Item Quantity updated successfully!"})
+        setTimeout(() => {
+          dispatchToast({type : "HIDE_TOAST" , payload : ""})
+        },2000)
     }
 
     return  <div>
@@ -54,11 +77,11 @@ const Cart = () => {
                    Rs. {product.discountedPrice} <span class="original-price">{product.originalPrice}</span>
                   </p>
                   <p class="product-quantity">
-                    Qty : <button class="cart-increment-btn" onClick={ () =>  decrementCartQuantity(product) }> - </button> { product.quantity }
-                    <button class="cart-decrement-btn" onClick = { () => incrementCartQuantity(product)}> + </button>
+                    Qty : <button class="cart-increment-btn" onClick={ () => !isToastActive &&  decrementCartQuantity(product) }> - </button> { product.quantity }
+                    <button class="cart-decrement-btn" onClick = { () => !isToastActive && incrementCartQuantity(product)}> + </button>
                   </p>
-                  <button class="remove-cart-btn" onClick={ () => removeFromCartHandler(product)}>Remove from cart</button>
-                  <button class="add-to-wishlist-btn" onClick = {() => moveToWishlistHandler(product)}>Add to wishlist</button>
+                  <button class="pointer remove-cart-btn" onClick={ () => !isToastActive && removeFromCartHandler(product)}>Remove from cart</button>
+                  <button class="pointer add-to-wishlist-btn" onClick = {() => !isToastActive && moveToWishlistHandler(product)}>Add to wishlist</button>
                 </div>
                
               </div>)}
@@ -87,8 +110,7 @@ const Cart = () => {
         </section>
         </main>
         </div>}
-
- 
+        { isToastActive && <Toast />}
     </div>
 }
 

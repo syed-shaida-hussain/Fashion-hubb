@@ -37,3 +37,7 @@ body {
 .price-details{
     height: fit-content;
 }
+
+.pointer{
+    cursor: pointer;
+}
