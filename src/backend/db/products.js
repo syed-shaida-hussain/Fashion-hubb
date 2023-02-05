@@ -2,15 +2,14 @@ import { v4 as uuid } from "uuid";
 import img1  from "../../assets/images/ecom-img1.webp"
 import img2  from "../../assets/images/ecom-img2.webp"
 import img3  from "../../assets/images/ecom-img3.webp"
-import img4  from "../../assets/images/ecom-img4.jpg"
 import img5  from "../../assets/images/ecom-img5.webp"
 import img6  from "../../assets/images/ecom-img6.jpg"
-import img7  from "../../assets/images/ecom-img7.png"
-import img8  from "../../assets/images/ecom-img8.webp"
-import img9  from "../../assets/images/ecom-img9.jpg"
-import img10  from "../../assets/images/ecom-img10.webp"
 import img11  from "../../assets/images/ecom-img11.png"
 import img12  from "../../assets/images/ecom-img12.avif"
+import img13  from "../../assets/images/ecom-img13.jpg"
+import img14  from "../../assets/images/ecom-img-14.webp"
+import img15  from "../../assets/images/ecom-img-15.jpg"
+import img16  from "../../assets/images/ecom-img16.jpg"
 
 
 export const products = [
@@ -32,7 +31,7 @@ export const products = [
     name: "Men premium sports TShirt",
     originalPrice: "1500",
     discountedPrice : "1000",
-    src : {url : img9 , alt : "Men's Tshirt"},
+    src : {url : img13 , alt : "Men's Tshirt"},
     categoryMen: true,
     categoryWomen: false,
     cod : true ,
@@ -45,7 +44,7 @@ export const products = [
     name: "Men winter cool Jacket",
     originalPrice: "3000",
     discountedPrice : "2500",
-    src : {url : img7 , alt : "Winter jacket"},
+    src : {url : img3 , alt : "Winter jacket"},
     categoryMen: true,
     categoryWomen: false,
     cod : true ,
@@ -71,7 +70,7 @@ export const products = [
     name: "Men stylish casual shoes",
     originalPrice: "1000",
     discountedPrice : "700",
-    src : {url : img3 , alt : "Casual shoes"},
+    src : {url : img14 , alt : "Casual shoes"},
     categoryMen: true,
     categoryWomen: false,
     cod : true ,
@@ -97,7 +96,7 @@ export const products = [
     name: "Men formal quality Jacket",
     originalPrice: "4000",
     discountedPrice : "3500",
-    src : {url : img8 , alt : "Formal jacket"},
+    src : {url : img15 , alt : "Formal jacket"},
     categoryMen: true,
     categoryWomen: false,
     cod : false ,
@@ -123,7 +122,7 @@ export const products = [
     name: "Women premium party shoes",
     originalPrice: "1000",
     discountedPrice : "500",
-    src : {url : img4 , alt : "Women party shoes"},
+    src : {url : img16 , alt : "Women party shoes"},
     categoryMen: false,
     categoryWomen: true,
     cod : true ,
@@ -162,7 +161,7 @@ export const products = [
     name: "Men round neck Tshirt",
     originalPrice: "700",
     discountedPrice : "500",
-    src : {url : img10 , alt : "Round Tshirt"},
+    src : {url : img13 , alt : "Round Tshirt"},
     categoryMen: true,
     categoryWomen: false,
     cod : false ,

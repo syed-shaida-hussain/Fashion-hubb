@@ -9,7 +9,7 @@ const Header = () => {
         <li><a className="nav-pill "> <Link to="/products" className="nav-pill ">Products</Link></a></li>
     </ul>
 
-    <input className="search-bar" type="text" placeholder="Search" />
+    {/* <input className="search-bar" type="text" placeholder="Search" /> */}
 
     <ul className="navigation navbar-right flex">
         <li>

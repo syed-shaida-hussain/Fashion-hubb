@@ -1,0 +1,23 @@
+.single-product-container{
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+    border: 1px solid var(--primary-color);
+    border-radius: 1rem;
+}
+
+.single-product-img{
+    max-width: 19.7rem;
+    border-radius: 1rem;
+}
+
+.add-to-cart-btn{
+    max-width: 20rem;
+}
+
+.like-icon{
+    bottom: 19rem;
+    left: 8rem;
+}
