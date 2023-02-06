@@ -15,6 +15,7 @@ import img16  from "../../assets/images/ecom-img16.jpg"
 export const products = [
   {
     _id: uuid(),
+    brand : "Nike",
     name: "Men premium trendy Jacket",
     originalPrice: "2000",
     discountedPrice : "1500",
@@ -28,6 +29,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    brand : "Sobo",
     name: "Men premium sports TShirt",
     originalPrice: "1500",
     discountedPrice : "1000",
@@ -41,10 +43,11 @@ export const products = [
   },
   {
     _id: uuid(),
-    name: "Men winter cool Jacket",
+    brand : "Nike",
+    name: "Men winter cool shoes",
     originalPrice: "3000",
     discountedPrice : "2500",
-    src : {url : img3 , alt : "Winter jacket"},
+    src : {url : img3 , alt : "sports shoes"},
     categoryMen: true,
     categoryWomen: false,
     cod : true ,
@@ -54,6 +57,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    brand : "Nike",
     name: "Women premium Tshirt",
     originalPrice: "3000",
     discountedPrice : "2800",
@@ -67,6 +71,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    brand : "Roadster",
     name: "Men stylish casual shoes",
     originalPrice: "1000",
     discountedPrice : "700",
@@ -80,6 +85,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    brand : "Nike",
     name: "Women premium stylish shoes",
     originalPrice: "2000",
     discountedPrice : "1500",
@@ -93,6 +99,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    brand : "Superdry",
     name: "Men formal quality Jacket",
     originalPrice: "4000",
     discountedPrice : "3500",
@@ -106,6 +113,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    brand : "Nike",
     name: "Men sports durable shoes",
     originalPrice: "1000",
     discountedPrice : "500",
@@ -119,6 +127,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    brand : "Fashion",
     name: "Women premium party shoes",
     originalPrice: "1000",
     discountedPrice : "500",
@@ -132,6 +141,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    brand : "Bewakoof",
     name: "Men formal premium pants",
     originalPrice: "3000",
     discountedPrice : "2500",
@@ -145,6 +155,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    brand : "Nike",
     name: " women casual party Jacket",
     originalPrice: "3000",
     discountedPrice : "2000",
@@ -158,6 +169,7 @@ export const products = [
   },
   {
     _id: uuid(),
+    brand : "Sobo",
     name: "Men round neck Tshirt",
     originalPrice: "700",
     discountedPrice : "500",

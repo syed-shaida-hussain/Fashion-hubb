@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { Header } from "../../components";
+import { Toast } from "../../components/Toast";
 import { useServices } from "../../contexts"
 import { useToast } from "../../contexts/toast-context/toast-context";
 import "./SingleProduct.css"
@@ -36,21 +37,35 @@ const SingleProductPage = () => {
             },2000)
         }
     }
+
+    function deleteFromWishlistHandler() {
+      dispatchService({type : "DELETE_FROM_WISHLIST" , payload : singleProduct})
+      dispatchToast({type : "SHOW_TOAST" , payload : "Item Removed from Wishlist successfully!"})
+      setTimeout(() => {
+        dispatchToast({type : "HIDE_TOAST" , payload : ""})
+      },2000)
+    }
+
     return <div>
         <Header/>
         <div className="single-product-container">
-    <img className="single-product-img" src= {singleProduct.src.url} alt={singleProduct.src.alt} />
-    {wishItems.find((item) => item._id === singleProduct._id) ? <i className="material-icons like-icon " onClick = {() => dispatchService({type : "DELETE_FROM_WISHLIST" , payload : singleProduct})} > favorite</i> :  <i className="material-icons like-icon black" onClick = {() => moveToWishlistHandler(singleProduct)}> favorite_border</i>}
-
-    <div className="wishlist-product-info">
-        <p className="wishlist-info-text  mt1">
-            {singleProduct.name}
-        </p>
-        <p className="price-text margin-top-bottom "> Rs <span class = "line-through">({singleProduct.originalPrice})</span> {singleProduct.discountedPrice}  </p> 
-        <p className = "margin-top-bottom">Rating : {singleProduct.rating}</p>
-    </div>
-    <button onClick={ () => !isToastActive && addToCartHandler(singleProduct) } className="add-to-cart-btn ">Add to cart</button>
-</div>
+            <img className="single-product-img" src= {singleProduct.src.url} alt={singleProduct.src.alt} />
+            <div className="product-description">
+              <div className="wishlist-product-info">
+                <h2>{singleProduct.brand}</h2>
+                  <p className="wishlist-info-text">
+                      {singleProduct.name}
+                  </p>
+                  <p className="price-text margin-top-bottom "> Rs <span class = "line-through">({singleProduct.originalPrice})</span> {singleProduct.discountedPrice}  </p> 
+                  <p className = "margin-top-bottom">Rating : {singleProduct.rating}</p>
+                  <button onClick={ () => !isToastActive && addToCartHandler(singleProduct) } className="add-to-cart-btn ">Add to cart</button>
+                  <div className=" like-btn-container">
+                  {wishItems.find((item) => item._id === singleProduct._id) ? <button className="button outline-btn like-btn " onClick = {() => deleteFromWishlistHandler(singleProduct)} >  Remove from wishlist</button> :  <button className="button outline-btn like-btn" onClick = {() => moveToWishlistHandler(singleProduct)}>Add to wishlist</button>}
+                  </div>
+              </div>
+            </div>
+        </div>
+        { isToastActive && <Toast />}
 
     </div> 
 }
